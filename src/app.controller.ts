@@ -1,12 +1,25 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return String(process.env.NODE_ENV);
+  }
+
+  @Get('cidades')
+  getCities() {
+    return {
+      nome: 'Crato',
+      id: 1,
+    };
+  }
+
+  @Get('estados')
+  getStates() {
+    return {
+      nome: 'CE',
+      id: 1,
+    };
   }
 }
