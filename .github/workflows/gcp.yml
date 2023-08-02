@@ -24,7 +24,7 @@ jobs:
       env:
         GOOGLE_PROJECT: ci-cd-394523
       run: |
-        gcloud auth configure-docker us-central1-docker.pkg.devgcloud auth configure-docker us-east4-docker.pkg.dev
+        gcloud auth configure-docker us-east4-docker.pkg.dev
         docker build -t us-east4-docker.pkg.dev/ci-cd-394523/hello-cicd:latest .
         docker push us-east4-docker.pkg.dev/ci-cd-394523/hello-cicd:latest
 
