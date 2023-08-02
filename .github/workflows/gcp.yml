@@ -11,6 +11,9 @@ jobs:
       IMAGE_NAME: hello-cicd
       PROJECT_ID: ci-cd-394523
     steps:
+    - name: Install Docker
+      uses: douglascamata/setup-docker-macos-action
+
     - name: Checkout
       uses: actions/checkout@v2
 
