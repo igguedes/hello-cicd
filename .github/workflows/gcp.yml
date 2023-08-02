@@ -14,7 +14,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - uses: 'google-github-actions/setup-gcloud@v1'
+    - uses: google-github-actions/setup-gcloud@v0.2.0
       with:
         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
         project_id: ${{ env.PROJECT_ID }}
@@ -25,9 +25,7 @@ jobs:
 
     - name: Autentica o docker no GCP
       run: |-
-        gcloud auth login
-        gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin us-east4-docker.pkg.dev
-
+        gcloud auth configure-docker us-east4-docker.pkg.dev --quiet
 
     - name: Fazendo Push da imagem para o Artifact Registry
       env:
