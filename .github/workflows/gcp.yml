@@ -6,7 +6,7 @@ on:
 jobs:
   build-push-gar:
     name: Gerando a imagem e enviando ao artifact registry
-    runs-on: macos-latest
+    runs-on: windows-latest
     env:
       IMAGE_NAME: hello-cicd
       PROJECT_ID: ci-cd-394523
