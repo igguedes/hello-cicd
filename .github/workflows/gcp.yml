@@ -1,32 +1,32 @@
-name: Deploy Nginx
-
+name: Deploy para o GCP
 on:
   push:
-    branches:
-    - 'main'
-
+    branches: [ main ]
 jobs:
-  deploy:
+  build-push-gar:
+    name: Gerando a imagem e enviando ao artifact registry
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: hello-cicd
+      PROJECT_ID: ci-cd-394523
     steps:
 
-    - name: code checkout
+    - name: Checkout
       uses: actions/checkout@v2
 
-    - name: install the gcloud cli
-      uses: google-github-actions/setup-gcloud@v0
+    - uses: google-github-actions/setup-gcloud@v0
       with:
-        project_id: ci-cd-394523
         service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+        project_id: ${{ env.PROJECT_ID }}
         export_default_credentials: true
 
-    - name: build and push the docker image
-      env:
-        GOOGLE_PROJECT: ci-cd-394523
-      run: |
+    - name: Autentica o docker no GCP
+      run: |-
         gcloud auth configure-docker us-east4-docker.pkg.dev
+
+    - name: Buildando a imagem e fazendo Push da imagem para o Artifact Registry
+      env:
+        GIT_TAG: v0.1.0
+      run: |-
         docker build -t us-east4-docker.pkg.dev/ci-cd-394523/hello-cicd/hello:latest .
         docker push us-east4-docker.pkg.dev/ci-cd-394523/hello-cicd/hello:latest
-
-
-
