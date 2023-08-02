@@ -25,6 +25,7 @@ jobs:
 
     - name: Autentica o docker no GCP
       run: |-
+        gcloud auth login
         gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin us-east4-docker.pkg.dev
 
 
