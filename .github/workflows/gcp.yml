@@ -25,7 +25,7 @@ jobs:
 
     - name: Autentica o docker no GCP
       run: |-
-        gcloud auth configure-docker us-east4-docker.pkg.dev -y
+        gcloud auth configure-docker us-east4-docker.pkg.dev --quiet
 
     - name: Fazendo Push da imagem para o Artifact Registry
       env:
