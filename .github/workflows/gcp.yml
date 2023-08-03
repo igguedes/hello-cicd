@@ -41,7 +41,7 @@ jobs:
 
       - name: Fazendo Deploy no Cloud Run
         run: |-
-          gcloud run deploy teste \
+          gcloud run deploy ${{ env.REPO_NAME }}-$GITHUB_SHA \
           --region $REGION \
           --image us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:$GITHUB_SHA \
           --allow-unauthenticated \
