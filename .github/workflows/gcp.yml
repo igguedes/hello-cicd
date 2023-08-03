@@ -76,7 +76,7 @@ jobs:
 
       - name: Deploy
         run: |-
-          gcloud run deploy hellohaha \
+          gcloud run deploy teste \
           --region $REGION \
           --image us-east4-docker.pkg.dev/ci-cd-394523/hello-cicd/hello:latest \
           --platform "managed" \
