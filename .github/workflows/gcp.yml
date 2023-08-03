@@ -68,16 +68,16 @@ jobs:
 
       - name: Build and tag the docker image
         run: |-
-          docker build -t us-east4-docker.pkg.dev/ci-cd-394523/hello-cicd/hello:latest .
+          docker build -t us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:latest .
 
       - name: Push the image to the Google Container Registry (GCR)
         run: |-
-          docker push us-east4-docker.pkg.dev/ci-cd-394523/hello-cicd/hello:latest
+          docker push us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:latest
 
       - name: Deploy
         run: |-
           gcloud run deploy teste \
           --region $REGION \
-          --image us-east4-docker.pkg.dev/ci-cd-394523/hello-cicd/hello:latest \
+          --image us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:latest \
           --platform "managed" \
           --quiet
