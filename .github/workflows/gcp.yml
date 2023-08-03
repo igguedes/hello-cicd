@@ -79,5 +79,6 @@ jobs:
           gcloud run deploy teste \
           --region $REGION \
           --image us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:latest \
+          --allow-unauthenticated \
           --platform "managed" \
           --quiet
