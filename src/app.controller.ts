@@ -7,7 +7,7 @@ export class AppController {
     return String(process.env.NODE_ENV);
   }
 
-  @Get('cidades')
+  @Get('cidades2')
   getCities() {
     return {
       nome: 'Crato',
