@@ -33,17 +33,17 @@ jobs:
 
       - name: Fazendo build e criando tag para a imagem
         run: |-
-          docker build -t us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:latest .
+          docker build -t us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello::$GITHUB_SHA .
 
       - name: Enviando a imagem para o Artifact Registry
         run: |-
-          docker push us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:latest
+          docker push us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello::$GITHUB_SHA
 
       - name: Fazendo Deploy no Cloud Run
         run: |-
           gcloud run deploy teste \
           --region $REGION \
-          --image us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:latest \
+          --image us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:$GITHUB_SHA \
           --allow-unauthenticated \
           --platform "managed" \
           --quiet
