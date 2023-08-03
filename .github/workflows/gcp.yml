@@ -40,7 +40,7 @@ on:
       - main
 
 env:
-  PROJECT_ID: ci-cd-394523
+  PROJECT_ID: meu-projeto-394802
   REGION: us-east4
   # project-name but it can be anything you want
   REPO_NAME: hello-cicd
