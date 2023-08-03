@@ -37,7 +37,7 @@ jobs:
 
       - name: Enviando a imagem para o Artifact Registry
         run: |-
-          docker push us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello::$GITHUB_SHA
+          docker push us-east4-docker.pkg.dev/${{ env.PROJECT_ID }}/repo/hello:$GITHUB_SHA
 
       - name: Fazendo Deploy no Cloud Run
         run: |-
