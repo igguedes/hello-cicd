@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "ativo": true,
+            "carteira_corporativa_nome": null,
+            "documento": "061.913.183-75",
+            "funcionario": true,
+            "funcionario_ativo": true,
+            "grande_empresa": 0,
+            "id": 107,
+            "nome": "Igor Carolino",
+            "nota_fiscal": 0,
+            "nota_padrao": 0,
+            "nota_provedor": 0,
+            "nota_publico": 0,
+            "orgao_publico": 0,
+            "pcd": null,
+            "pessoa_juridica": false
+        }
+    ],
+    "total": 1
+}
